@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet" />
+    <!--link sheet-->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
+      body {
+        font-family: "Oswald", sans-serif;
+        padding: 0;
+        margin: 0;
+        background-color: #A31ACB;
+      }
+      form label {
+        margin-bottom: 5px;
+        font-size: large;
+      }
+      .center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 400px;
+        background: #fff;
+        border-radius: 20px;
+      }
+      .center h1{
+        text-align: center;
+        padding: 0 0 20px 0;
+        border-bottom: 1px solid silver ;
+      }
+      .center form{
+        padding: 0 40px;
+        box-sizing: border-box;
+      }
+      form .text{
+        position: relative;
+        border-bottom: 2px solid #aadada;
+        margin: 30px 0;
+      }
+      .text input{
+        width: 100%;
+        padding: 0 5px;
+        height: 40px;
+        font-size: 16px;
+        border: none;
+        background: none;
+        outline: none;
+      }
+      .text label{
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        color:#adadad;
+        transform: translateY(-50%);
+        font-size: 16px;
+        pointer-events: none;
+      }
+      .text span::before{
+        content: '';
+        position: absolute;
+        top: 40px;
+        
+      }
+      button {
+        font-family: "Oswald", sans-serif;
+        padding: 10px;
+        background-color: green;
+        border-radius: 5px;
+        border: #fff;
+        color: #fff;
+      }
+      button:hover {
+        background-color: aqua;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+    <h1>Aplikasi Pengaduan Siswa/Siswi</h1>
+    <form name="submit-to">
+      <div class="text">  
+        <input type="text" name="nama" />
+        <span></span>
+        <label>nama</label>
+      </div>
+      <div class="text">
+        <input name="aku-adalah" id=""></input>
+        <span></span>
+        <label>pesan</label>
+      </div>
+      <button type="submit" onclick="kirim()">kirim</button>
+    </form>
+    <script>
+      function kirim() {
+        alert("terimakasih");
+      }
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxRf-MwLnddZqDJgrCl2tsYxBu0L42OI3XQj_XpfA4xBRPGrM84AWFPhVwOl3EIYUPS1w/exec";
+      const form = document.forms["submit-to"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => console.log("Success!", response))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
+    </div>
+  </body>
+</html>
